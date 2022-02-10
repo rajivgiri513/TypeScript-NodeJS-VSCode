@@ -1,9 +1,8 @@
-"use strict";
-exports.__esModule = true;
-exports.ContactSchema = void 0;
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-exports.ContactSchema = new Schema({
+import * as mongoose from 'mongoose';
+
+const Schema = mongoose.Schema;
+
+export const ContactSchema = new Schema({
     firstName: {
         type: String,
         required: 'Enter a first name'
@@ -22,7 +21,7 @@ exports.ContactSchema = new Schema({
         type: Number
     },
     created_date: {
-        type: Date,
-        "default": Date.now
+       type: Date,
+       default: Date.now 
     }
 });

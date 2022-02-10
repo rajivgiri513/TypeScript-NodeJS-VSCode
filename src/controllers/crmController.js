@@ -1,51 +1,52 @@
-import mongoose from 'mongoose';
-import { ContactSchema } from '../models/crmModel';
-
-const Contact = mongoose.model('Contact', ContactSchema);
-
-export const addNewContact = (req, res) => {
-    let newContact = new Contact(req.body);
-
-    newContact.save((err, contact) => {
+"use strict";
+exports.__esModule = true;
+exports.deleteContact = exports.updateContact = exports.getContactWithID = exports.getContacts = exports.addNewContact = void 0;
+var mongoose = require("mongoose");
+var crmModel_1 = require("../models/crmModel");
+var Contact = mongoose.model('Contact', crmModel_1.ContactSchema);
+var addNewContact = function (req, res) {
+    var newContact = new Contact(req.body);
+    newContact.save(function (err, contact) {
         if (err) {
             res.send(err);
         }
         res.json(contact);
     });
 };
-
-export const getContacts = (req, res) => {
-    Contact.find({}, (err, contact) => {
+exports.addNewContact = addNewContact;
+var getContacts = function (req, res) {
+    Contact.find({}, function (err, contact) {
         if (err) {
             res.send(err);
         }
         res.json(contact);
     });
 };
-
-export const getContactWithID = (req, res) => {
-    Contact.findById(req.params.contactId, (err, contact) => {
+exports.getContacts = getContacts;
+var getContactWithID = function (req, res) {
+    Contact.findById(req.params.contactId, function (err, contact) {
         if (err) {
             res.send(err);
         }
         res.json(contact);
     });
-}
-
-export const updateContact = (req, res) => {
-    Contact.findOneAndUpdate({ _id: req.params.contactId}, req.body, { new: true }, (err, contact) => {
+};
+exports.getContactWithID = getContactWithID;
+var updateContact = function (req, res) {
+    Contact.findOneAndUpdate({ _id: req.params.contactId }, req.body, { "new": true }, function (err, contact) {
         if (err) {
             res.send(err);
         }
         res.json(contact);
-    })
-}
-
-export const deleteContact = (req, res) => {
-    Contact.remove({ _id: req.params.contactId }, (err, contact) => {
+    });
+};
+exports.updateContact = updateContact;
+var deleteContact = function (req, res) {
+    Contact.remove({ _id: req.params.contactId }, function (err) {
         if (err) {
             res.send(err);
         }
-        res.json({ message: 'Successfully deleted contact'});
-    })
-}
+        res.json({ message: 'Successfully deleted contact' });
+    });
+};
+exports.deleteContact = deleteContact;
