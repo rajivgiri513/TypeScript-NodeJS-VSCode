@@ -398,7 +398,7 @@
   },
   "scripts": {
     "build": "tsc --w",
-    "start": "tsc && ts-node ./dist/index.js"
+    "start": "tsc && ts-node ./index.js"
   },
   "repository": {
     "type": "git",
