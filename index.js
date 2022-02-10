@@ -6,10 +6,20 @@ var bodyParser = require("body-parser");
 var crmRoutes_1 = require("./src/routes/crmRoutes");
 var app = express();
 var PORT = 3000;
+var mlabUser = 'root';
+var mlabPass = 'root';
+var dataConnection = function (user, pass) {
+    return 'mongodb+srv://{user}:{pass}@cluster0.q34li.mongodb.net/linkedinDB?retryWrites=true&w=majority';
+};
+var database = dataConnection(mlabUser, mlabPass);
+//Coinnection string
 // mongoose connection
+//Array Test
+//let simpleArray: number[] = [1,2,3,4];
 //mongoose.Promise = global.Promise;
-mongoose.connect('mongodb+srv://root:root@cluster0.q34li.mongodb.net/linkedinDB?retryWrites=true&w=majority', {
-// useMongoClient: true
+mongoose.connect(database, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 });
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
