@@ -6,22 +6,27 @@ import { ConnectionOptions } from 'tls';
 
 const app = express();
 const PORT: number = 3000;
-const mlabUser: string = 'root';
-const mlabPass: string = 'RE6LwMSGGaKmp5Cm';
+/* const mlabUser: string = 'root';
+const mlabPass: string = 'root';
 
-const dataConnection = (user: string , pass: string): string => {
+const dataConnection = 'mongodb+srv://${user}:${pass}@cluster0.q34li.mongodb.net/linkedinDB?retryWrites=true&w=majority';
 
-return 'mongodb://${user}:${pass}@cluster0.q34li.mongodb.net/linkedinDB?retryWrites=true&w=majority';
-}
+//let database = dataConnection();
 
-let database = dataConnection(mlabUser, mlabPass);
+mongoose.connect(dataConnection, {
+    
+    useMongoClient:true
+    
+} as mongoose.ConnectOptions );
+// bodyparser setup */
 
-mongoose.connect(database, {
-    useNewUrlParser: true,
-  useUnifiedTopology: true,
-} as ConnectionOptions);
 
-// bodyparser setup
+//Coinnection string
+mongoose.connect('mongodb+srv://root:root@cluster0.q34li.mongodb.net/linkedinDB?retryWrites=true&w=majority',{
+   // useMongoClient:true
+    
+});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
