@@ -2,31 +2,27 @@ import * as express from 'express';
 import * as mongoose from 'mongoose';
 import * as bodyParser from 'body-parser';
 import routes from './src/routes/crmRoutes';
-import { ConnectionOptions } from 'tls';
 
 const app = express();
 const PORT: number = 3000;
-/* const mlabUser: string = 'root';
+const mlabUser: string = 'root';
 const mlabPass: string = 'root';
 
-const dataConnection = 'mongodb+srv://${user}:${pass}@cluster0.q34li.mongodb.net/linkedinDB?retryWrites=true&w=majority';
+const dataConnection =(user:string, pass: string): string => {
 
-//let database = dataConnection();
+    return `mongodb+srv://${user}:${pass}@cluster0.q34li.mongodb.net/linkedinDB?retryWrites=true&w=majority`
 
-mongoose.connect(dataConnection, {
+}
+
+
+let database = dataConnection(mlabUser, mlabPass);
+
+mongoose.connect(database, {
     
-    useMongoClient:true
-    
-} as mongoose.ConnectOptions );
-// bodyparser setup */
-
-
-//Coinnection string
-mongoose.connect('mongodb+srv://root:root@cluster0.q34li.mongodb.net/linkedinDB?retryWrites=true&w=majority',{
-   // useMongoClient:true
+    //useMongoClient:true
     
 });
-
+// bodyparser setup */
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

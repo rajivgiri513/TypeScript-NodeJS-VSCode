@@ -4,8 +4,8 @@
         "moduleResolution":"node",
         "module":"commonjs",
         "allowJs":true,
-      //  "target":"es6",
-        "target": "es2015"
+        "target":"es6",
+        //"target": "es2015"
     },
     "include":[
         "./src/**/*",
