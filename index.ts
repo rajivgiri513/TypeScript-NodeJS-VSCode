@@ -2,11 +2,20 @@ import * as express from 'express';
 import * as mongoose from 'mongoose';
 import * as bodyParser from 'body-parser';
 import routes from './src/routes/crmRoutes';
+import messenger from './src/controllers/createMessage';
+import { Settings } from './settings';
+import { Contact } from './src/controllers/crmController';
+
 
 const app = express();
-const PORT: number = 3000;
-const mlabUser: string = 'root';
-const mlabPass: string = 'root';
+//const PORT: number = 3000;
+//const mlabUser: string = 'root';
+//const mlabPass: string = 'root';
+
+//instance of our class
+
+let messages = new messenger(Settings.PORT);
+let getContact = new Contact();
 
 const dataConnection =(user:string, pass: string): string => {
 
@@ -15,7 +24,7 @@ const dataConnection =(user:string, pass: string): string => {
 }
 
 
-let database = dataConnection(mlabUser, mlabPass);
+let database = dataConnection(Settings.mlabUser, Settings.mlabPass);
 
 mongoose.connect(database, {
     
@@ -28,13 +37,43 @@ app.use(bodyParser.json());
 
 routes(app);
 
+//interface Name {
+ ////   firstName: string;
+//}
+
+function nameCreator<T>(name: T): T{
+    return name;
+}
+let myName = nameCreator<string>('Raj Giri, ');
+let myAge = nameCreator<number>(37);
+
+interface Warriors{
+    weapon: string;
+    skills: number;
+}
+
+interface Warriors{
+    name: string;
+    
+}
+
+let Batman: Warriors ={weapon: "Bat Mobile", skills: 10, name: "Raj G"}
+
+
+
 // serving static files
 app.use(express.static('public'));
 
 app.get('/', (req, res) =>
-    res.send(`Node and express server is running on port ${PORT}`)
+    res.send(Batman)
 );
 
-app.listen(PORT, () =>
-    console.log(`your server is running on port ${PORT}`)
+app.listen(Settings.PORT, () =>
+   console.log(myName, myAge, messages.messagePrint())
+   
+   
 );
+    const fs = require('fs');
+    const out ={getContact}
+    const myConsole = new console.Console(fs.createWriteStream('./output.txt'));
+    myConsole.log(out);

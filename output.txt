@@ -1,0 +1,6 @@
+{
+  getContact: {
+    _id: new ObjectId("6208e20ba30677ce28c73fbd"),
+    created_date: 2022-02-13T10:48:43.005Z
+  }
+}

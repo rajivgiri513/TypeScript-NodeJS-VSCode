@@ -1,7 +1,7 @@
 import * as mongoose from 'mongoose';
 import { ContactSchema } from '../models/crmModel';
 
-const Contact = mongoose.model('Contact', ContactSchema);
+export const Contact = mongoose.model('Contact', ContactSchema);
 
 export const addNewContact = (req, res) => {
     let newContact = new Contact(req.body);
@@ -20,8 +20,20 @@ export const getContacts = (req, res) => {
             res.send(err);
         }
         res.json(contact);
+
+        for(let item of contact){
+            console.log(item);
+            
+        }
+        for(let itemPos in contact){
+            console.log(itemPos);
+            
+        }
+       
     });
+    
 };
+
 
 export const getContactWithID = (req, res) => {
     Contact.findById(req.params.contactId, (err, contact) => {
