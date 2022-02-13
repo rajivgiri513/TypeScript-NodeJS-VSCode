@@ -1,6 +1,11 @@
 {
   getContact: {
     _id: new ObjectId("6208e20ba30677ce28c73fbd"),
+    firstName: Raj,
+    lastName: G,
+    email: email@email.com,
+    company: Company,
+    phone: 123456789,
     created_date: 2022-02-13T10:48:43.005Z
   }
 }
