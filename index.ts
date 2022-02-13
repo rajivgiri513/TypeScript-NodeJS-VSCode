@@ -22,7 +22,7 @@ mongoose.connect(database, {
     //useMongoClient:true
     
 });
-// bodyparser setup */
+// bodyparser setup */ 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
